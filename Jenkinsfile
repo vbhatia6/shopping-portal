@@ -1,8 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
+
+    stage('build-the-app') {
+     steps {
         echo 'this is the build job'
         sh 'npm install'
       }
@@ -22,7 +23,8 @@ pipeline {
       }
     }
 
-    stage('artifact') {
+
+    stage('archive') {
       steps {
         archiveArtifacts '**/distribution/*.zip'
       }
@@ -34,8 +36,10 @@ pipeline {
   }
   post {
     always {
-      echo 'this pipeline has completed...'
+
+      echo 'hey! shopping-portal pipeline has completed...'
     }
 
   }
 }
+
