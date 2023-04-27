@@ -1,8 +1,9 @@
 pipeline {
   agent any
   stages {
+
     stage('build-the-app') {
-      steps {
+     steps {
         echo 'this is the build job'
         sh 'npm install'
       }
@@ -15,12 +16,13 @@ pipeline {
       }
     }
 
-    stage('three') {
+    stage('package') {
       steps {
         echo 'this is the package job'
         sh 'npm run package'
       }
     }
+
 
     stage('archive') {
       steps {
@@ -34,8 +36,10 @@ pipeline {
   }
   post {
     always {
+
       echo 'hey! shopping-portal pipeline has completed...'
     }
 
   }
 }
+
